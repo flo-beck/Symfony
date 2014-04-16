@@ -1,0 +1,7 @@
+parameters:
+#    framework1_home.example.class: Framework1\HomeBundle\Example
+
+services:
+#    framework1_home.example:
+#        class: %framework1_home.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
