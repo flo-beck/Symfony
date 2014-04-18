@@ -1,0 +1,7 @@
+HelloTheWorld:
+    pattern:  /hello-world
+    defaults: { _controller: fbeckHomeBundle:Home:index }
+
+GoodbyeTheWorld:
+    pattern:  /goodbye-world
+    defaults: { _controller: fbeckHomeBundle:Home:bye }

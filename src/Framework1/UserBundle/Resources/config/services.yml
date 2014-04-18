@@ -1,7 +1,0 @@
-parameters:
-#    framework1_user.example.class: Framework1\UserBundle\Example
-
-services:
-#    framework1_user.example:
-#        class: %framework1_user.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

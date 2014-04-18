@@ -1,0 +1,7 @@
+parameters:
+#    fbeck_blog.example.class: fbeck\BlogBundle\Example
+
+services:
+#    fbeck_blog.example:
+#        class: %fbeck_blog.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

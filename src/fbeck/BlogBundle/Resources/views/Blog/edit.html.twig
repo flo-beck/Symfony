@@ -1,0 +1,29 @@
+{# src/fbeck/BlogBundle/Resources/views/Blog/modifier.html.twig #}
+
+{% extends "fbeckBlogBundle::layout.html.twig" %}
+
+{% block title %}
+  Modifier un article - {{ parent() }}
+{% endblock %}
+
+{% block fbeck_blog_body %}
+
+  <h2>Modifier un article</h2>
+
+  {% include "fbeckBlogBundle:Blog:form.html.twig" %}
+
+  <p>
+    Vous éditez un article déjà existant,
+    ne le changez pas trop pour éviter
+    aux membres de ne pas comprendre
+    ce qu'il se passe.
+  </p>
+
+  <p>
+    <a href="{{ path('fbeck_blog_view', {'id': article.id}) }}" class="btn">
+      <i class="icon-chevron-left"></i>
+      Retour à l'article
+    </a>
+  </p>
+
+{% endblock %}

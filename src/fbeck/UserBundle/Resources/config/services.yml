@@ -1,0 +1,7 @@
+parameters:
+#    fbeck_user.example.class: fbeck\UserBundle\Example
+
+services:
+#    fbeck_user.example:
+#        class: %fbeck_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
