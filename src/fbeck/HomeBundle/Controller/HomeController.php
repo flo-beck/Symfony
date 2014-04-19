@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
   public function indexAction()
   {
-  	return $this->render('fbeckHomeBundle:Home:index.html.twig', array('nom' => 'winzou'));
+  	return $this->render('fbeckHomeBundle:Home:index.html.twig');
   }
   
   public function byeAction()

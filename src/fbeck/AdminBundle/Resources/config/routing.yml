@@ -1,0 +1,27 @@
+fbeck_admin_homepage:
+    pattern:  /
+    defaults: { _controller: fbeckAdminBundle:Admin:index }
+
+fbeck_admin_view:
+    pattern: /user/{id}
+    defaults: { _controller: fbeckAdminBundle:Admin:view }
+    requirements:
+        page: \d*
+
+fbeck_admin_edit:
+    pattern: /edit/{id}
+    defaults: { _controller: fbeckAdminBundle:Admin:edit }
+    requirements:
+        page: \d*
+
+fbeck_admin_delete:
+    pattern: /delete/{id}
+    defaults: { _controller: fbeckAdminBundle:Admin:delete }
+    requirements:
+        page: \d*
+
+# fbeck_admin_delete:
+#     pattern: /delete/{id}
+#     defaults: { _controller: fbeckAdminBundle:Admin:delete }
+#     requirements:
+#         page: \d*

@@ -1,5 +1,5 @@
 HelloTheWorld:
-    pattern:  /hello-world
+    pattern:  /
     defaults: { _controller: fbeckHomeBundle:Home:index }
 
 GoodbyeTheWorld:

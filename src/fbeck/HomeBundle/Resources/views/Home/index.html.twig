@@ -1,18 +1,18 @@
 {# src/fbeck/HomeBundle/Resources/views/Home/index.html.twig #}
 
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Bienvenue sur ma première page avec le Site du Zéro !</title>
-  </head>
-  <body>
-    <h1>Hello {{ nom }} !</h1>
+{% extends "::layout.html.twig" %}
 
-    <p>
-      Le Hello World est un grand classique en programmation.
-      Il signifie énormément, car cela veut dire que vous avez
-      réussi à exécuter le programme pour accomplir une tâche simple :
-      afficher ce hello world !
-    </p>
-  </body>
-</html>
+{% block title %}
+  The Home of Awesomeness - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+ {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+        Welcome {{ app.user.username }} ! Did you know...
+        <iframe width="640" height="360" src="http://www.youtube.com/embed/oDOog0XS8Qg?rel=0&start=6&end=173&autoplay=1" frameborder="0" allowfullscreen></iframe>
+      {% else %}
+        Nothing is awesome for you. 
+      {% endif %}
+
+{% endblock %}

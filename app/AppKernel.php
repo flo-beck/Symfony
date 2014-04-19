@@ -20,6 +20,7 @@ class AppKernel extends Kernel
             new fbeck\BlogBundle\fbeckBlogBundle(),
             new fbeck\UserBundle\fbeckUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new fbeck\AdminBundle\fbeckAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

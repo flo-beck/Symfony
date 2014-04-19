@@ -1,0 +1,46 @@
+@font-face
+{
+	font-family: main;
+	src: url(/img/awesome.otf);
+}
+
+#header {
+	background-color: #40CFFF;
+	margin-top: 20px;
+}
+
+#header h1 {
+	font-family: main;
+	font-size: 190px;
+}
+
+ h1 {
+ 	font-family: main;
+ 	font-size: 100px;
+ }
+
+h2 {
+	font-family: main;
+	font-size: 50px;
+}
+
+#menu {
+	background-color: #FF8973;
+}
+#menu div, #content div {
+	padding: 20px;
+}
+
+.box {
+	-webkit-box-shadow: 2px 2px 5px 3px #787878;
+	box-shadow: 2px 2px 5px 3px #787878;
+	border-radius: 5px;
+}
+
+.status {
+	background-color: #FFD673;
+	padding: 10px;
+	margin-bottom: 20px;
+	display: flex;
+	justify-content: space-around;
+}

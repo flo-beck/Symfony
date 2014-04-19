@@ -61,7 +61,7 @@ class BlogController extends Controller
     ));
   }
 
-   public function viewAction($id)
+  public function viewAction($id)
   {
     $article = array(
       'id'      => 1,
