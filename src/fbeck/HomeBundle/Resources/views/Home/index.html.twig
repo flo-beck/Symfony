@@ -9,10 +9,10 @@
 {% block body %}
 
  {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-        Welcome {{ app.user.username }} ! Did you know...
+        <p>Welcome {{ app.user.username }} ! Did you know? </p>
         <iframe width="640" height="360" src="http://www.youtube.com/embed/oDOog0XS8Qg?rel=0&start=6&end=173&autoplay=1" frameborder="0" allowfullscreen></iframe>
       {% else %}
-        Nothing is awesome for you. 
+        Nothing is awesome for you...yet! try logging in. Or visit the <a href="{{ path('fbeck_blog_home') }}">blog</a>. 
       {% endif %}
 
 {% endblock %}

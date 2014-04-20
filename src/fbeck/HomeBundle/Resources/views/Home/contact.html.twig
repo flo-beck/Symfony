@@ -1,0 +1,51 @@
+{# src/fbeck/HomeBundle/Resources/views/Home/contact.html.twig #}
+
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+  Contact some Awesomeness - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+
+  <h2>Contact us!</h2>
+
+  {% if msg|default is not null %}
+  	<p> {{ msg }} </p>
+  {% endif %}
+
+  <form method='post' class="contact user form-horizontal" name="contact" action="{{ path('fbeck_home_contact') }}">
+	<div class="control-group">
+		<label class="control-label"> Name: </label>
+		<div class="controls">
+			<input type="text" name="name" required="required"> 
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label"> Email: </label>
+		<div class="controls">
+			<input type="text" name="email" required="required"> 
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label"> Subject: </label>
+		<div class="controls">
+			<select name="subject" required="required">
+				<option>Awesome suggestion</option>
+				<option>Technical error (impossible)</option>
+				<option>OMG change the music</option>
+				<option>Other</option>
+			</select>
+		</div>
+	</div>
+	<div class="control-group">
+		<label class="control-label"> Your message: </label>
+		<div class="controls">
+			<textarea name="body" rows="10" required="required"></textarea>
+			<button type="submit" name="submit" value="AWESOME"class="btn"> Send </button>
+		</div>
+	</div>
+	
+</form>
+
+{% endblock %}

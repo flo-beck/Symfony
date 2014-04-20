@@ -5,9 +5,9 @@
 {% block fbeck_admin_body %}
 
   <h2>List of all our awesome users</h2>
-  <ul>
+  <ul class="all_users">
     {% for user in users %}
-		<li><a href="{{ path('fbeck_admin_view', {'id': user.id}) }}">{{ user.username }}</a></li>
+		<a href="{{ path('fbeck_admin_view', {'id': user.id}) }}"><li >{{ user.username }}</li></a>
 	{% endfor %}
   </ul>
 

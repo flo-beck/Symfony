@@ -17,7 +17,7 @@
   <body>
     <div class="container">
       <div id="header" class="hero-unit box">
-        <h1>Awesome Things</h1>
+        <a href="{{ path('fbeck_home_home') }}"><h1>Awesome Things</h1></a>
         <p>The site about awesome things.  If it's awesome, it's on here.  If it's not on here, it's not awesome. </br> Simple as. </p>
         {#<p><a class="btn btn-primary btn-large" href="http://www.siteduzero.com/informatique/tutoriels/developpez-votre-site-web-avec-le-framework-symfony2">
           Lire le tutoriel »
@@ -45,6 +45,7 @@
             </ul>
                       
             {{ render(controller("fbeckBlogBundle:Blog:menu", {'nombre': 3})) }}
+          <a class="contact" href="{{ path('fbeck_home_contact') }}"><p>Contact us!</p></a>
           </div>
         </div>
         <div id="content" class="span9">

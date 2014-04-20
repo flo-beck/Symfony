@@ -12,6 +12,12 @@
 #header h1 {
 	font-family: main;
 	font-size: 190px;
+	color: rgb(51, 51, 51);
+}
+
+#header a:hover, #header h1:hover {
+	text-decoration: none;
+	color: #005580
 }
 
  h1 {
@@ -24,10 +30,21 @@ h2 {
 	font-size: 50px;
 }
 
+a.contact p {
+	font-family: main;
+	font-size: 30px;
+	color: rgb(51, 51, 51);
+}
+
+a.contact:hover, a.contact:hover p {
+	text-decoration: none;
+	color: #FF8973
+}
+
 #menu {
 	background-color: #FF8973;
 }
-#menu div, #content div {
+#menu div, .main_body{
 	padding: 20px;
 }
 
@@ -44,3 +61,55 @@ h2 {
 	display: flex;
 	justify-content: space-around;
 }
+
+.all_users{
+	list-style: none;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	width: 50%;
+}
+
+.all_users a:hover {
+	text-decoration: none;
+}
+
+.all_users a li:hover {
+	background-color: #23EB8B;
+}
+
+.all_users a li {
+	padding: 10px;
+	background: #A3FFD3;
+	margin-bottom: 2px;
+	color: rgb(51, 51, 51);
+	border-radius: 20px;
+}
+
+.user {
+	background: #A3FFD3;
+	padding: 20px;
+	border-radius: 20px;
+	margin-bottom: 20px;
+}
+
+.view_user {
+	background: #A3FFD3;
+	padding: 20px;
+	border-radius: 20px;
+	margin-bottom: 20px;
+}
+
+.edit_user {
+	background: #A3FFD3;
+	border-radius: 20px;
+	margin-bottom: 20px;
+	padding: 20px;
+}
+
+#fbeck_userbundle_user div:nth-child(n+3) {
+	display: inline-block;
+	margin: 10px;
+	text-align: center;
+}
+

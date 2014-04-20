@@ -7,8 +7,8 @@ namespace fbeck\AdminBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
-
-use fbeck\AdminBundle\Entity\Profile;
+use fbeck\UserBundle\Entity\User;
+use fbeck\UserBundle\Form\UserType;
 
 
 class AdminController extends Controller
@@ -32,63 +32,68 @@ class AdminController extends Controller
 
   public function editAction($id)
   {
-  	// $profile = new Profile();
-  	// $profile->username = "username";
-  	// $profile->email = "email@email.com";
-  	// $profile->roles = array('ROLE_USER');
 
-  	// $form = $this->createFormBuilder($profile)
-  	// 	->add('username', 'text')
-  	// 	->add('email', 'text')
-  	// 	->add('roles', 'text')
-  	// 	->add('save', 'submit')
-  	// 	->getForm();
+    $userManager = $this->get('fos_user.user_manager');
+    $users = $userManager->findUsers();
+    $user = $userManager->findUserBy(array('id' => $id));
+    $redirect = false;
 
+    $usertype = new UserType($user->getUsername(), $user->getEmail(), $user->isAccountNonLocked(), $user->isAccountNonExpired(), $user->hasRole('ROLE_ADMIN') );
+  	$form = $this->createForm($usertype);
+    $request = $this->get('request');
+    if ($request->getMethod() == 'POST'){
+      $form->bind($request);
+      if ($form->isValid()) {
+        $data = $form->getData();
 
-
-  	// $request = $this->getRequest();
-  	// var_dump($request);
-  	// if ($request->isMethod('POST')) {
-  	// 	$form = $this->get('form.admin_edit');
-  	// 	$form->getData();
-   //  	$form->submit($request);
-  	// 	echo"GOT IT!!!\n";
-  	// 	var_dump($form);
-  	// }
-  	// 	$form->getData();
-  	// 	var_dump($form);
-  	// }
-  	// else
-  	// {
-  		$userManager = $this->get('fos_user.user_manager');
-  		$user = $userManager->findUserBy(array('id' => $id));
-    // if ($user->hasRole('ROLE_ADMIN'))
-  		return $this->render('fbeckAdminBundle:Admin:edit.html.twig', array(
-  			'id' => $id, 'user' => $user
-  			));
-  	// }
+        if (isset($data['username']))
+          $user->setUsername($data['username']);
+        if (isset($data['email']))
+          $user->setEmail($data['email']);
+        if ($data['admin'] == true && !$user->hasRole('ROLE_ADMIN'))
+        {
+            $user->addRole('ROLE_ADMIN');
+        }
+        else if ($data['admin'] == false && $user->hasRole('ROLE_ADMIN'))
+        {
+          $currentuser = $this->container->get('security.context')->getToken()->getUser();
+          if ($currentuser === $user){
+            $redirect = true;
+          }
+          $user->removeRole('ROLE_ADMIN');
+        }
+        $user->setLocked($data['locked']);
+        $user->setExpired($data['expired']);
+        $userManager->updateUser($user);
+        if ($redirect == true) {
+          $this->container->get('security.context')->setToken(NULL);
+          return $this->render('fbeckHomeBundle:Home:index.html.twig');
+        } else {
+          return $this->render('fbeckAdminBundle:Admin:view.html.twig', array('user' => $user));
+        }
+      }
+    }
+		return $this->render('fbeckAdminBundle:Admin:edit.html.twig', array(
+			'id' => $id, 'user' => $user, 'form' => $form->createView()
+			));
   }
 
   public function deleteAction($id)
   {
   	$userManager = $this->get('fos_user.user_manager');
     $user = $userManager->findUserBy(array('id' => $id));
-    // if ($user->hasRole('ROLE_ADMIN'))
-    return $this->render('fbeckAdminBundle:Admin:view.html.twig', array(
-     'user' => $user
-    ));
+    if ($user !== NULL) {
+      $currentuser = $this->container->get('security.context')->getToken()->getUser();
+      if ($currentuser === $user){
+         $this->container->get('security.context')->setToken(NULL);
+         $userManager->deleteUser($user);
+         return $this->render('fbeckHomeBundle:Home:index.html.twig');
+      }
+      else {
+        $userManager->deleteUser($user);
+      }
+    }
+    $users = $userManager->findUsers();
+    return $this->render('fbeckAdminBundle:Admin:index.html.twig', array('users' => $users));
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-// $request  = $this->getRequest();
-// $postData = $request->request->get('test');
